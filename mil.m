@@ -4,7 +4,7 @@
 % Função
 func = '(x*x)*sin(x) + cos(x)';
 % Erro
-amplitude = 0.001;
+erro = 0.001;
 %quantidade máxima de operações
 qtd = 20;
 %valores de x0
@@ -16,31 +16,49 @@ disp('Digite o valor superior');
 b = input('');
 possuiRaiz = 1;
 iteracoes = 1;
-amplitudeAtual = b -a;
+erroAbs = b - a;
 
 %G(x)
 g = '-cos(x)/(x*sin(x))';
 %G'(x)
-g1 = '(cos(x)/(x*x)*sin(x)) + (x*(1/(sin(x)*sin()x)))/(x*x))';
+gPrim = '(x*cos(x))/(x*x*sin(x))';
 
-g1a = subs(g1, a);
-g1a = abs(g1a); %pega valor absoluto da primeira derivada, tendo x como o valor de a
+gPrimA = (a*cos(a))/(a*a*sin(a));
 
-g1b = subs(g1, b);
-g1b = abs(g1b);
+if(gPrimA < 0) 
+    gPrimA = gPrimA*(-1); 
+end %pega valor absoluto da primeira derivada, tendo x como o valor de a
 
-if(g1a < g1b)
-    x0 = g1a;
-else
-    x0 = g1b;
+gPrimB = (b*cos(b))/(b*b*sin(b));
+if(gPrimB < 0) 
+    gPrimB = gPrimB*(-1); 
 end
 
-while(iteracoes<qtd && amplitudeAtual >= amplitude)    
-    x0 = subs(g, x0);
+if(gPrimA < gPrimB)
+    x0 = gPrimA;
+else
+    x0 = gPrimB;
+end
+
+while(iteracoes<qtd)
+    xAnt = x0;
+    x0 = -cos(x0)/(x0*sin(x0));
     xs(iteracoes) = x0;
-    
+    if(x0 == inf || x0 == -inf)
+        possuiRaiz = 0;
+        break;
+    end
     iteracoes = iteracoes + 1;
-    amplitudeAtual = b - a;
+    erroAbs = x0 - xAnt;
+    if(erroAbs<0)
+        erroAbs = erroAbs * (-1);
+    end
+    if(erroAbs < erro)
+        possuiRaiz = 1;
+        break;
+    else
+        possuiRaiz = 0;
+    end
 end
 
 if(possuiRaiz == 1)
@@ -60,9 +78,3 @@ ylabel('x^2*sin(x) + cos(x)');
 for index = 1 : iteracoes
     fprintf('\n%d', xs(index));
 end
-
-
-
-
-
-
