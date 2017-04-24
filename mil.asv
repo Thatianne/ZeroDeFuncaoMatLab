@@ -4,7 +4,7 @@
 % Função
 func = '(x*x)*sin(x) + cos(x)';
 % Erro
-amplitude = 0.001;
+amplitude = 0.01;
 %quantidade máxima de operações
 qtd = 20;
 %valores de x0
@@ -35,30 +35,10 @@ else
     x0 = g1b;
 end
 
-while(iteracoes<qtd && amplitudeAtual >= amplitude)    
-    x0 = subs(g, x0);
-    xs(iteracoes) = x0;
+while(iteracoes<qtd && amplitudeAtual >= amplitude)
     
-    iteracoes = iteracoes + 1;
-    amplitudeAtual = b - a;
-end
-
-if(possuiRaiz == 1)
-    fprintf('A raiz é %d', x0)    
-    x = linspace(a-2, b+2);    
-else
-    x = linspace(-10, 10);
-    fprintf('Não possui raiz no intervalo (%d, %d)', a, b);
-end
-%plotar gráfico
-y = ((x.*x).*sin(x)) + cos(x);
-plot(x, y);
-grid on;
-xlabel('x');
-ylabel('x^2*sin(x) + cos(x)');
-
-for index = 1 : iteracoes
-    fprintf('\n%d', xs(index));
+    
+    
 end
 
 

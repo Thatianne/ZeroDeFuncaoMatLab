@@ -12,21 +12,30 @@ xs = zeros(20, 1);
 %Recebe intervalo
 disp('Digite o valor inferior');
 a = input('');
+c = a;
 disp('Digite o valor superior');
 b = input('');
 possuiRaiz = 1;
 iteracoes = 1;
 amplitudeAtual = b -a;
-while iteracoes<qtd && amplitudeAtual >= amplitude
+while iteracoes<qtd 
     x0 = (a+b)/2;
     xs(iteracoes) = x0;
     if(subs(func, a)*subs(func, x0) < 0)
         b = x0;
+        possuiRaiz = 1;
+        if(amplitudeAtual < amplitude)
+            break;
+        end
     elseif(subs(func, b)*subs(func, x0) < 0)
         a = x0;
+        possuiRaiz = 1;
+        if(amplitudeAtual < amplitude)
+            break;
+        end
     else %não possui raiz no intervalo dado
+        a = x0;
         possuiRaiz = 0;
-        break;
     end
     iteracoes = iteracoes + 1;
     amplitudeAtual = b - a;
@@ -38,7 +47,7 @@ if(possuiRaiz == 1)
     x = linspace(a-2, b+2);    
 else
     x = linspace(-10, 10);
-    fprintf('Não possui raiz no intervalo (%d, %d)', a, b);
+    fprintf('Não possui raiz no intervalo (%d, %d)', c, b);
 end
 %plotar gráfico
 y = ((x.*x).*sin(x)) + cos(x);
