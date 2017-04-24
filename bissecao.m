@@ -17,7 +17,7 @@ b = input('');
 possuiRaiz = 1;
 iteracoes = 1;
 amplitudeAtual = b -a;
-while(amplitudeAtual >= amplitude)
+while iteracoes<qtd && amplitudeAtual >= amplitude
     x0 = (a+b)/2;
     xs(iteracoes) = x0;
     if(subs(func, a)*subs(func, x0) < 0)
