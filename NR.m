@@ -10,6 +10,7 @@ erro = 0.001;
 qtd = 20;
 %valores de x0
 xs = zeros(20, 1);
+
 %Recebe intervalo
 disp('Digite o valor inferior');
 a = input('');

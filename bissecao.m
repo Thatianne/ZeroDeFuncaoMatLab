@@ -10,15 +10,18 @@ amplitude = 0.01;
 qtd = 20;
 %valores de x0
 xs = zeros(20, 1);
+
 %Recebe intervalo
 disp('Digite o valor inferior');
 a = input('');
 c = a;
 disp('Digite o valor superior');
 b = input('');
+
 possuiRaiz = 1;
 iteracoes = 1;
 amplitudeAtual = b -a;
+
 while iteracoes<qtd 
     x0 = (a+b)/2;
     xs(iteracoes) = x0;
