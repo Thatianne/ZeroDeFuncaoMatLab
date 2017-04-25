@@ -1,6 +1,7 @@
 % ***** MÉTODO NEWTON-RAPHSON - MATLAB ****
 % Pedro Gomes e Thatianne Carvalho
 
+
 % Função
 func = '(x*x)*sin(x) + cos(x)';
 % Erro
