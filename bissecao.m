@@ -37,6 +37,9 @@ while iteracoes<qtd
         a = x0;
         possuiRaiz = 0;
     end
+    if((x0*x0)*sin(x0) + cos(x0) == 0)        
+        break;
+    end
     iteracoes = iteracoes + 1;
     amplitudeAtual = b - a;
     

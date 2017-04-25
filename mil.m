@@ -9,11 +9,13 @@ erro = 0.001;
 qtd = 20;
 %valores de x0
 xs = zeros(20, 1);
+
 %Recebe intervalo
 disp('Digite o valor inferior');
 a = input('');
 disp('Digite o valor superior');
 b = input('');
+
 possuiRaiz = 1;
 iteracoes = 1;
 erroAbs = b - a;
@@ -35,9 +37,9 @@ if(gPrimB < 0)
 end
 
 if(gPrimA < gPrimB)
-    x0 = gPrimA;
+    x0 = a;
 else
-    x0 = gPrimB;
+    x0 = b;
 end
 
 while(iteracoes<qtd)
